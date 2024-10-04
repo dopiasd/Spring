@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
+    MemberService memberService;
 
     @Test
     void join() {
         //given
         Member member =new Member();
-        member.setName(Hello);
+        member.setName("z");
 
         //when
         Long saveId = memberService.join(member);
