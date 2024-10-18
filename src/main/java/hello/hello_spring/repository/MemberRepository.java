@@ -1,15 +1,20 @@
 package hello.hello_spring.repository;
 
-import hello.hello_spring.domain.Member;
+import hello.hello_spring.repository.*;
+import hello.hello_spring.service.MemberService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
+public class SpringConfig {
 
-import java.util.List;
-import java.util.Optional;
+    private final MemberRepository memberRepository;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
-public interface MemberRepository {
-    Member save(Member member);
-    Optional<Member> findById(Long id);
-    Optional<Member> findByName(String name);
-    List<Member> findAll();
-
+    @Bean
+    public MemberService memberService() {
+        return new MemberService(memberRepository);
+    }
 }
